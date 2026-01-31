@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>List-test</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+
+    .app {
+      background: #fff;
+      padding: 20px;
+      width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 8px;
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 15px;
+    }
+
+    li {
+      padding: 8px;
+      background: #eee;
+      margin-bottom: 6px;
+      cursor: pointer;
+    }
+
+    li.completado {
+      text-decoration: line-through;
+      color: gray;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+    <h1>My List</h1>
+
+    <input type="text" id="tarea" placeholder="Write a task">
+    <button type="button" onclick="agregarTarea()">Add</button>
+
+    <ul id="lista"></ul>
+  </div>
+
+  <script>
+    function agregarTarea() {
+      const input = document.getElementById("tarea");
+      const texto = input.value.trim();
+
+      if (texto === "") {
+        return;
+      }
+
+      const li = document.createElement("li");
+      li.textContent = texto;
+
+      li.addEventListener("click", () => {
+        li.classList.toggle("completado");
+      });
+
+      document.getElementById("lista").appendChild(li);
+      input.value = "";
+    }
+  </script>
+
+</body>
+</html>
